@@ -14,7 +14,7 @@
 
 ## Поддерживаемые устройства:
 
-1. [RF24 ESP-NOW Gateway](https://github.com/aZholtikov/RF24-ESP-NOW-Gateway)
+1. [RF24 - ESP-NOW Gateway](https://github.com/aZholtikov/RF24-ESP-NOW-Gateway)
 2. [ESP-NOW Switch](https://github.com/aZholtikov/ESP-NOW-Switch)
 3. [ESP-NOW LED Light/Strip](https://github.com/aZholtikov/ESP-NOW-LED-Light-Strip)
 
