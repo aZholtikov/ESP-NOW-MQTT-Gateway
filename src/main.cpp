@@ -188,13 +188,11 @@ void onMqttMessage(char *topic, byte *payload, unsigned int length)
         flag = true;
         if (mac == myNet.getNodeMac())
         {
-
             semaphoreForKeepAliveMessage = false;
             mqttClient.publish(String(topicPrefix + "/gateway/" + mac).c_str(), "", true);
             mqttClient.publish(String(topicPrefix + "/gateway/" + mac + "/status").c_str(), "offline", true);
             if (message == "update")
             {
-                mqttClient.disconnect();
                 myNet.update();
                 restartTimer.once(300, restart);
             }
@@ -228,7 +226,10 @@ void onMqttMessage(char *topic, byte *payload, unsigned int length)
     }
     if (flag)
     {
-        outgoingData.payloadsType = message == "update" ? UPDATE : SET;
+        if (message == "restart")
+            outgoingData.payloadsType = RESTART;
+        else
+            outgoingData.payloadsType = message == "update" ? UPDATE : SET;
         char buffer[sizeof(outgoingData.message)];
         serializeJsonPretty(json, buffer);
         os_memcpy(outgoingData.message, buffer, sizeof(outgoingData.message));
