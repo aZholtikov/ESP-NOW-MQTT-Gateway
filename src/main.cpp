@@ -21,7 +21,7 @@ const uint16_t mqttHostPort{1883};
 const char *mqttUserID{"ID"};
 const char *mqttUserLogin{""};
 const char *mqttUserPassword{""};
-const String topicPrefix{"homeassistant1"};
+const String topicPrefix{"homeassistant"};
 //***********************************************************//
 
 void onBroadcastReceiving(const char *data, const byte *sender);
